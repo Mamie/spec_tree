@@ -101,4 +101,4 @@ for n in N:
         
 perf_metrics = pd.DataFrame({'seqlength': Ns, 'par1_size': par1s, 'par2_size': par2s, 
                              'RF': RFs, "F1": F1s, "runtime": rts})
-perf_metrics.to_csv("/gpfs/ysm/project/kleinstein/mw957/repos/spec_tree/script/rooting_metrics_ls.csv")
+perf_metrics.to_csv("/gpfs/ysm/project/kleinstein/mw957/repos/spec_tree/script/rooting_metrics_ls_2.csv")
