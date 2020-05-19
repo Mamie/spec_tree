@@ -12,4 +12,4 @@
 module load miniconda/4.7.10
 source activate r_env
 
-python hky_raxml.py
+python h3n2_raxml.py
