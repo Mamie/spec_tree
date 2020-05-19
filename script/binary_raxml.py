@@ -58,9 +58,9 @@ def run_method(method, tree, threshold = None):
     print("F1% = ",F1) 
     return([method, str(threshold), runtime, RF, F1])
 
-tree_path = "/gpfs/ysm/project/kleinstein/mw957/repos/spectral-tree-inference/data/birth_death.newick"
+tree_path = "/gpfs/ysm/project/kleinstein/mw957/repos/spectral-tree-inference/data/binary_tree.newick"
 
-birth_death_tree = dendropy.Tree.get(path=tree_path, schema="newick")
+binary_tree = dendropy.Tree.get(path=tree_path, schema="newick")
 n_runs = 20
 
 methods = ["raxml", "snj", "nj", "nj sp deep", "nj sp deep", "nj sp deep", "raxml sp deep", "raxml sp deep", "raxml sp deep"]
@@ -77,7 +77,7 @@ for i in range(n_runs):
         method = methods[j]
         threshold = thresholds[j]
         print(method, threshold)
-        res = run_method(method, birth_death_tree, threshold = threshold)
+        res = run_method(method, binary_tree, threshold = threshold)
         ms.append(res[0])
         ts.append(res[1])
         rts.append(res[2])
