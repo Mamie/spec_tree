@@ -64,7 +64,7 @@ binary_tree = dendropy.Tree.get(path=tree_path, schema="newick")
 n_runs = 20
 
 methods = ["raxml", "snj", "nj", "nj sp deep", "nj sp deep", "nj sp deep", "raxml sp deep", "raxml sp deep", "raxml sp deep"]
-thresholds = [None, None, None, 16, 32, 64, 16, 32, 64]
+thresholds = [None, None, None, 64, 128, 256, 64, 128, 256]
 
 ms = []
 ts = []
