@@ -3,7 +3,7 @@
 #SBATCH --job-name=binary
 #SBATCH --ntasks=1 --nodes=1
 #SBATCH --mem-per-cpu=10G
-#SBATCH --time=1-00:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --error=log/binary.%A.err
 #SBATCH --output=log/binary.%A.out

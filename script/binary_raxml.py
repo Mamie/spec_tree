@@ -58,10 +58,10 @@ def run_method(method, tree, threshold = None):
     print("F1% = ",F1) 
     return([method, str(threshold), runtime, RF, F1])
 
-tree_path = "/gpfs/ysm/project/kleinstein/mw957/repos/spectral-tree-inference/data/binary_tree.newick"
+tree_path = "/gpfs/ysm/project/kleinstein/mw957/repos/spectral-tree-inference/data/binary_tree_1024.newick"
 
 binary_tree = dendropy.Tree.get(path=tree_path, schema="newick")
-n_runs = 20
+n_runs = 10
 
 methods = ["raxml", "snj", "nj", "nj sp deep", "nj sp deep", "nj sp deep", "raxml sp deep", "raxml sp deep", "raxml sp deep"]
 thresholds = [None, None, None, 64, 128, 256, 64, 128, 256]
@@ -85,5 +85,5 @@ for i in range(n_runs):
         f1s.append(res[4])
 
 perf_metrics = pd.DataFrame({'method': ms, 'threshold': ts, 'runtime': rts, 'RF': rfs, "F1": f1s})
-perf_metrics.to_csv("/gpfs/ysm/project/kleinstein/mw957/repos/spec_tree/script/binary_angle.csv")
+perf_metrics.to_csv("/gpfs/ysm/project/kleinstein/mw957/repos/spec_tree/script/binary_angle_1024.csv")
 
