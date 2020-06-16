@@ -17,7 +17,7 @@ from dendropy.model.discrete import simulate_discrete_chars, Jc69, Hky85
 from dendropy.calculate.treecompare import symmetric_difference
 
 def run_method(method, tree, threshold = None):
-    data_HKY = simulate_discrete_chars(500, tree, Hky85(kappa = 2), mutation_rate=0.05)
+    data_HKY = simulate_discrete_chars(300, tree, Hky85(kappa = 2), mutation_rate=0.05)
     ch_list = list()
     for t in data_HKY.taxon_namespace:
         ch_list.append([x.symbol for x in data_HKY[t]])

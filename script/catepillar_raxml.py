@@ -17,7 +17,7 @@ from dendropy.model.discrete import simulate_discrete_chars, Jc69, Hky85
 from dendropy.calculate.treecompare import symmetric_difference
 
 def run_method(method, tree, threshold = None):
-    data_HKY = simulate_discrete_chars(1000, tree, Hky85(kappa = 2), mutation_rate=0.1)
+    data_HKY = simulate_discrete_chars(500, tree, Hky85(kappa = 2), mutation_rate=0.05)
     ch_list = list()
     for t in data_HKY.taxon_namespace:
         ch_list.append([x.symbol for x in data_HKY[t]])
@@ -64,13 +64,13 @@ def run_method(method, tree, threshold = None):
     print("F1% = ",F1) 
     return([method, str(threshold), runtime, RF, F1])
 
-tree_path = "/gpfs/ysm/project/kleinstein/mw957/repos/spectral-tree-inference/data/catepillar_128.newick"
+tree_path = "/gpfs/ysm/project/kleinstein/mw957/repos/spectral-tree-inference/data/catepillar_512.newick"
 
 catepillar_tree = dendropy.Tree.get(path=tree_path, schema="newick")
 n_runs = 10
 
 methods = ["RaXML", "SNJ", "NJ", "STR + NJ", "STR + NJ", "STR + NJ", "STR + SNJ", "STR + SNJ", "STR + SNJ", "STR + RaXML", "STR + RaXML", "STR + RaXML"]
-thresholds = [None, None, None, 16, 32, 64, 16, 32, 64, 16, 32, 64]
+thresholds = [None, None, None, 64, 128, 256, 64, 128, 256, 64, 128, 256]
 
 ms = []
 ts = []
@@ -91,5 +91,5 @@ for i in range(n_runs):
         f1s.append(res[4])
 
 perf_metrics = pd.DataFrame({'method': ms, 'threshold': ts, 'runtime': rts, 'RF': rfs, "F1": f1s})
-perf_metrics.to_csv("/gpfs/ysm/project/kleinstein/mw957/repos/spec_tree/script/catepillar_angle_128.csv")
+perf_metrics.to_csv("/gpfs/ysm/project/kleinstein/mw957/repos/spec_tree/script/catepillar_angle_512.csv")
 
